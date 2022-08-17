@@ -1,0 +1,11 @@
+{
+    "files.associations": {
+        "*.md": "markdown",
+        "task.h": "c",
+        "stm32f427xx.h": "c",
+        "stm32f4xx_hal.h": "c",
+        "stm32f4xx_hal_can.h": "c",
+        "can.h": "c",
+        "stdio.h": "c"
+    }
+}
