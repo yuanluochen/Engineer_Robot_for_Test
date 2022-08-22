@@ -9,7 +9,7 @@ make: *** No rule to make target 'all'.  Stop.
 # There is NO WARRANTY, to the extent permitted by law.
  
 
-# Make data base, printed on Tue Aug 16 10:58:33 2022
+# Make data base, printed on Mon Aug 22 20:18:52 2022
 
 # Variables
 
@@ -37,7 +37,7 @@ MAKE_COMMAND := make.exe
 # automatic
 @D = $(patsubst %/,%,$(patsubst %\,%,$(dir $@)))
 # environment
-CHROME_CRASHPAD_PIPE_NAME = \\.\pipe\crashpad_11100_CJIELYHCVWIMDCUK
+CHROME_CRASHPAD_PIPE_NAME = \\.\pipe\crashpad_19532_MHZWVTJSTWCEMFHN
 # environment
 FPS_BROWSER_USER_PROFILE_STRING = Default
 # environment
@@ -52,7 +52,7 @@ VSCODE_HANDLES_UNCAUGHT_ERRORS = true
 matic
 %F = $(notdir $%)
 # environment
-VSCODE_CODE_CACHE_PATH = C:\Users\discipline\AppData\Roaming\Code\CachedData\6d9b74a70ca9c7733b29f0456fd8195364076dda
+VSCODE_CODE_CACHE_PATH = C:\Users\discipline\AppData\Roaming\Code\CachedData\e4503b30fc78200f846c62cf8091b76ff5547662
 # environment
 LANG = C
 # default
@@ -64,11 +64,11 @@ MAKEFLAGS = pqrR
 # environment
 ONEDRIVE = C:\Users\discipline\OneDrive
 # makefile
-CURDIR := c:/Users/discipline/developer_workspace/code/RM_Program/RM_engineer_Project/MDK-ARM
+CURDIR := c:/Users/discipline/developer_workspace/code/RM_Program/Engineer_Robot_for_Test/RM_engineer_Project/MDK-ARM
 # environment
-APPLICATION_INSIGHTS_NO_DIAGNOSTIC_CHANNEL = true
-# a 
-utomatic
+APPLICATION_INSIGHTS_NO_DIAGN 
+OSTIC_CHANNEL = true
+# automatic
 *D = $(patsubst %/,%,$(patsubst %\,%,$(dir $*)))
 # environment
 PROGRAMFILES = C:\Program Files
@@ -85,14 +85,14 @@ MAKEFILE_LIST :=
 # automatic
 @F = $(notdir $@)
 # environment
-VSCODE_PID = 11100
+VSCODE_PID = 19532
 # automatic
 ?D = $(patsubst %/,%,$(patsubst %\,%,$(dir $?)))
 # automatic
 *F = $(notdir $*)
 # automatic
-<D = $(patsubst %/,%,$(patsubs 
-t %\,%,$(dir $<)))
+<D = $ 
+(patsubst %/,%,$(patsubst %\,%,$(dir $<)))
 # environment
 VSCODE_NLS_CONFIG = {"locale":"zh-cn","availableLanguages":{},"_languagePackSupport":true}
 # default
@@ -112,13 +112,13 @@ COMSPEC = C:\WINDOWS\system32\cmd.exe
 # environment
 WINDIR = C:\WINDOWS
 # environment
-MAKELEVEL := 0
+MAKELEVEL := 0 
+
 # default
-MAKE = $(MAKE 
-_COMMAND)
+MAKE = $(MAKE_COMMAND)
 # environment
-PATH = C:\Program Files (x86)\Common Files\Oracle\Java\javapath;C:\Program Files (x86)\VMware\VMware Workstation\bin\;C:\Windows\system32;C:\Windows;C:\Windows\System32\Wbem;C:\Windows\System32\WindowsPowerShell\v1.0\;C:\Windows\System32\OpenSSH\;C:\Program Files (x86)\NVIDIA Corporation\PhysX\Common;C:\Program Files\NVIDIA Corporation\NVIDIA NvDLISR;C:\WINDOWS\system32;C:\WINDOWS;C:\WINDOWS\System32\Wbem;C:\WINDOWS\System32\WindowsPowerShell\v1.0\;C:\WINDOWS\System32\OpenSSH\;C:\Program Files\Git\cmd;C:\Program Files\dotnet\;C:\Program Files\CMake\bin;C:\lua;C:\Program Files\nodejs\;C:\vs_code_file\mingw64\bin;C:\Program Files (x86)\STMicroelectronics\STM32 ST-LINK Utility\ST-LINK Utility;C:\Program Files\Calibre2\;C:\Program Files\MATLAB\R2022a\runtime\win64;C:\Program Files\MATLAB\R2022a\bin;;C:\Program Files\Docker\Docker\resources\bin;C:\ProgramData\DockerDesktop\version-bin;C:\Program Files (x86)\GNU Arm Embedded Toolchain\10 2021.10\bin;C:\Users\discipline\AppData\Local\Programs 
-\Python\Python310\Scripts\;C:\Users\discipline\AppData\Local\Programs\Python\Python310\;C:\Users\discipline\AppData\Local\Microsoft\WindowsApps;C:\Users\discipline\.dotnet\tools;C:\Users\discipline\AppData\Local\Programs\Microsoft VS Code\bin;C:\Users\discipline\AppData\Local\GitHubDesktop\bin;C:\Users\discipline\AppData\Roaming\npm;C:\Users\discipline\AppData\Local\Pandoc\
+PATH = C:\Program Files (x86)\Common Files\Oracle\Java\javapath;C:\Program Files (x86)\VMware\VMware Workstation\bin\;C:\Windows\system32;C:\Windows;C:\Windows\System32\Wbem;C:\Windows\System32\WindowsPowerShell\v1.0\;C:\Windows\System32\OpenSSH\;C:\Program Files (x86)\NVIDIA Corporation\PhysX\Common;C:\Program Files\NVIDIA Corporation\NVIDIA NvDLISR;C:\WINDOWS\system32;C:\WINDOWS;C:\WINDOWS\System32\Wbem;C:\WINDOWS\System32\WindowsPowerShell\v1.0\;C:\WINDOWS\System32\OpenSSH\;C:\Program Files\Git\cmd;C:\Program Files\dotnet\;C:\Program Files\CMake\bin;C:\lua;C:\Program Files\nodejs\;C:\vs_code_file\mingw64\bin;C:\Program Files (x86)\STMicroelectronics\STM32 ST-LINK Utility\ST-LINK Utility;C:\Program Files\Calibre2\;C:\Program Files\MATLAB\R2022a\runtime\win64;C:\Program Files\MATLAB\R2022a\bin;C:\Program Files (x86)\GNU Arm Embedded Toolchain\10 2021.10\bin;C:\Users\discipline\AppData\Local\Programs\Python\Python310\Scripts\;C:\Users\discipline\AppData\Local\Pr 
+ograms\Python\Python310\;C:\Users\discipline\AppData\Local\Microsoft\WindowsApps;C:\Users\discipline\.dotnet\tools;C:\Users\discipline\AppData\Local\Programs\Microsoft VS Code\bin;C:\Users\discipline\AppData\Roaming\npm;C:\Users\discipline\AppData\Local\Pandoc\
 # environment
 ZES_ENABLE_SYSMAN = 1
 # environment
@@ -127,14 +127,14 @@ COMPUTERNAME = DESKTOP-LIUD6GE
 MAKEFILES := 
 # automatic
 ^F = $(notdir $^)
- 
 # environment
 PROMPT = $P$G
 # environment
 LOGONSERVER = \\DESKTOP-LIUD6GE
 # environment
 USERNAME = discipline
-# environment
+# env 
+ironment
 COMMONPROGRAMFILES = C:\Program Files\Common Files
 # automatic
 ?F = $(notdir $?)
@@ -151,14 +151,14 @@ USERDOMAIN = DESKTOP-LIUD6GE
 # 'override' directive
 GNUMAKEFLAGS := 
 # environment
-O 
-S = Windows_NT
+OS = Windows_NT
 # makefile
 .DEFAULT_GOAL := 
 # default
 MAKE_VERSION := 4.3
 # environment
-SDL_AUDIODRIVER = directsound
+SDL_AUDIODRIVER = directsou 
+nd
 # environment
 PROGRAMFILES(X86) = C:\Program Files (x86)
 # environment
@@ -174,16 +174,16 @@ HOMEDRIVE = C:
 # environment
 PROCESSOR_ARCHITECTURE = AMD64
 # environment
-VSCODE_AMD_ENTRYPOINT = vs/workbench/api/node/extens 
-ionHostProcess
+VSCODE_AMD_ENTRYPOINT = vs/workbench/api/node/extensionHostProcess
 # environment
 COMMONPROGRAMFILES(X86) = C:\Program Files (x86)\Common Files
 # environment
-ELECTRON_RUN_AS_NODE = 1
+ELECTRON_R 
+UN_AS_NODE = 1
 # environment
 TEMP = C:\Users\DISCIP~1\AppData\Local\Temp
 # environment
-VSCODE_IPC_HOOK = \\.\pipe\976e73bdb9010fd30528cd41c7224e36-1.70.1-main-sock
+VSCODE_IPC_HOOK = \\.\pipe\976e73bdb9010fd30528cd41c7224e36-1.70.2-main-sock
 # default
 .RECIPEPREFIX := 
 # automatic
@@ -195,9 +195,9 @@ ALLUSERSPROFILE = C:\ProgramData
 # environment
 SESSIONNAME = Console
 # default
-.FEATURES := target-specific order-only second-expansion el 
-se-if shortest-stem undefine oneshell nocomment grouped-target extra-prereqs archives jobserver output-sync
-# environment
+.FEATURES := target-specific order-only second-expansion else-if shortest-stem undefine oneshell nocomment grouped-target extra-prereqs archives jobserver output-sync
+# envir 
+onment
 PROCESSOR_REVISION = 8d01
 # environment
 PROCESSOR_IDENTIFIER = Intel64 Family 6 Model 141 Stepping 1, GenuineIntel
@@ -210,10 +210,10 @@ PROCESSOR_IDENTIFIER = Intel64 Family 6 Model 141 Stepping 1, GenuineIntel
 
 # Directories
 
-# . (key c:/Users/discipline/developer_workspace/code/RM_Program/RM_engineer_Project/MDK-ARM, mtime 1 
-660552751): 11 files, no impossibilities.
+# . (key c:/Users/discipline/developer_workspace/code/RM_Program/Engineer_Robot_for_Test/RM_engineer_Project/MDK-ARM, mtime 1660705012): 11 files, no impossibilities.
 
-# 11 files, no impossibilities in 1 directories.
+# 11 files, no impossibilities in 1 directories. 
+
 
 # Implicit Rules
 
@@ -238,13 +238,13 @@ all:
 makefile:
 #  Implicit rule search has been done.
 #  File does not exist.
-#  Fil 
-e has been updated.
+#  File has been updated.
 #  Failed to be updated.
 
 # Not a target:
 makefile.mak:
-#  Implicit rule search has been done.
+#  Implicit rul 
+e search has been done.
 #  File does not exist.
 #  File has been updated.
 #  Failed to be updated.
@@ -264,13 +264,13 @@ GNUmakefile:
 
 # No general ('VPATH' variable) search path.
 
-# strcac 
-he buffers: 1 (0) / strings = 17 / storage = 245 B / avg = 14 B
-# current buf: size = 8162 B / used = 245 B / count = 17 / avg = 14 B
+# strcache buffers: 1 (0) / strings = 17 / storage = 245 B / avg = 14 B
+# current buf: size = 8162  
+B / used = 245 B / count = 17 / avg = 14 B
 
 # strcache performance: lookups = 20 / hit rate = 15%
 # hash-table stats:
 # Load=17/8192=0%, Rehash=0, Collisions=1/20=5%
-# Finished Make data base on Tue Aug 16 10:58:33 2022
+# Finished Make data base on Mon Aug 22 20:18:52 2022
 
  

@@ -8,7 +8,8 @@
 enum Error
 {
     CAN1_Error,//CAN1初始化失败，LED1闪烁5次，延时500ms
-    CAN2_Error,
+    CAN2_Error,//led2闪烁5次，每次之间延时500ms
+    CAN1_Tx_Error,//LED3闪烁5次延时500ms
 };
 
 

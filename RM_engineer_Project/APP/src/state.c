@@ -8,6 +8,8 @@
 //函数声明
 static void CAN1_Error_Handle(void);
 static void CAN2_Error_Handle(void);
+static void CAN1_Tx_Error_Handle(void);
+
 
 void Error_handle(uint16_t Error_Type)
 {
@@ -18,6 +20,9 @@ void Error_handle(uint16_t Error_Type)
         break;
     case CAN2_Error:
         CAN2_Error_Handle();
+        break;
+    case CAN1_Tx_Error:
+        CAN1_Tx_Error_Handle();
         break;
     }
 }
@@ -35,4 +40,11 @@ static void CAN2_Error_Handle(void)
     //led2闪烁5次警示
     for(int i = 0; i < ERROR_LED_FLASH_TIME; i++)
         LED_flash(LED2, ERROR_LED_FLASH_DELAY);
+}
+
+static void CAN1_Tx_Error_Handle(void)
+{
+    //led3闪烁5次警示
+    for(int i = 0; i < ERROR_LED_FLASH_TIME; i++)
+        LED_flash(LED3, ERROR_LED_FLASH_DELAY);
 }
