@@ -3,8 +3,37 @@
 //can1初始化结构体定义为全局变量为发送函数准备
 static CAN_HandleTypeDef CAN1_InitStructure;
 
-static uint16_t can1_init(uint32_t tsjw, uint32_t tsg1, uint32_t tsg2, uint32_t mode, uint32_t brp );
+//can发送帧配置
+#define CAN_TX_DLC 0x08
+#define CAN_TX_RTR CAN_RTR_DATA
+#define CAN_TX_IDE CAN_ID_STD
 
+//can接收配置
+#define CAN_RX_DLC 0x08
+
+/**
+ * @brief 电盘电机数据获取，将底盘电机数据存储到全局变量以便访问 
+ * 
+ * @param ptr 存储从底盘电机接收而来的数据的结构体指针变量
+ * 
+ * @param RxMessage 存储底盘电机接收数据的数组
+ */
+#define get_motor_measure(ptr, RxMessage)                                                     \
+    {                                                                                         \
+        (ptr)->motor_last_mechine_angle = (ptr)->motor_mechine_angle;                         \
+        (ptr)->motor_mechine_angle = (uint16_t)RxMessage[0] << 8 | (uint16_t)RxMessage[1];    \
+        (ptr)->motor_speed =  (uint16_t)RxMessage[2] << 8 | (uint16_t)RxMessage[3];           \
+        (ptr)->motor_current = (uint16_t)RxMessage[4] << 8 | (uint16_t)RxMessage[5];          \
+        (ptr)->motor_temprerate = (uint16_t)RxMessage[6];                                     \
+    }
+
+//can1 接收数据数组
+static uint8_t RxDate[8] = { 0 };
+
+//存储接收底盘数据的结构体数组
+static motor_measure_t Chassis_Motor_measure[4];
+
+static uint16_t can1_init(uint32_t tsjw, uint32_t tsg1, uint32_t tsg2, uint32_t mode, uint32_t brp );
 #if CAN2_INIT
 static uint16_t can2_init(uint32_t tsjw, uint32_t tsg1, uint32_t tsg2, uint32_t mode, uint32_t brp ); #endif
 #endif
@@ -41,7 +70,6 @@ static uint16_t can1_init(uint32_t tsjw, uint32_t tsg1, uint32_t tsg2, uint32_t 
     uint8_t init_flag = 0;
 
     GPIO_InitTypeDef GPIO_InitStructure;
-    CAN_HandleTypeDef CAN1_InitStructure;
     CAN_FilterTypeDef CAN1_FilterInit;
 
     // rcc使能
@@ -185,7 +213,7 @@ static uint16_t can2_init(uint32_t tsjw, uint32_t tsg1, uint32_t tsg2, uint32_t 
 }
 #endif
 
-uint16_t can1_SendMessage(uint16_t i1, uint16_t i2, uint16_t i3, uint16_t i4)
+uint16_t can1_SendMessage(uint16_t Motor_1, uint16_t Motor_2, uint16_t Motor_3, uint16_t Motor_4)
 {
     //can 发送数据
     uint8_t TxDate[8] = {0};
@@ -194,20 +222,20 @@ uint16_t can1_SendMessage(uint16_t i1, uint16_t i2, uint16_t i3, uint16_t i4)
     //发送数据帧配置结构体
     CAN_TxHeaderTypeDef CAN_TxStructure;
 
-    CAN_TxStructure.DLC = 0x08;
-    CAN_TxStructure.StdId = 0x200;
-    CAN_TxStructure.RTR = CAN_RTR_DATA;
-    CAN_TxStructure.IDE = CAN_ID_STD;
+    CAN_TxStructure.DLC =   CAN_TX_DLC;
+    CAN_TxStructure.StdId = CAN_Tx_ALL_ID;
+    CAN_TxStructure.RTR = CAN_TX_RTR;
+    CAN_TxStructure.IDE = CAN_TX_IDE;
 
     //数据帧配置
-    TxDate[0] = (i1 >> 8);
-    TxDate[1] = i1;
-    TxDate[2] = (i2 >> 8);
-    TxDate[3] = i2;
-    TxDate[4] = (i3 >> 8);
-    TxDate[5] = i3;
-    TxDate[6] = (i4 >> 8);
-    TxDate[7] = i4 ;
+    TxDate[0] = (Motor_1 >> 8);
+    TxDate[1] = Motor_1;
+    TxDate[2] = (Motor_2 >> 8);
+    TxDate[3] = Motor_2;
+    TxDate[4] = (Motor_3 >> 8);
+    TxDate[5] = Motor_3;
+    TxDate[6] = (Motor_4 >> 8);
+    TxDate[7] = Motor_4;
 
     //发送邮箱CAN_TX_MAILBOX1
     while(HAL_CAN_AddTxMessage(&CAN1_InitStructure, &CAN_TxStructure, TxDate, (uint32_t*) CAN_TX_MAILBOX1) != HAL_OK)
@@ -222,5 +250,70 @@ uint16_t can1_SendMessage(uint16_t i1, uint16_t i2, uint16_t i3, uint16_t i4)
 
 }
 
-//can1接收函数
+/**
+ * @brief CAN接收接收数据处理函数,将所收到的不同ID的can数据帧,进行分类，分别接收不同的数据
+ * 
+ * @param CAN_RxStr CAN接收数据结构体
+ * 
+ * @retval none
+ */
+static void CAN_RxMsgHandle(CAN_RxHeaderTypeDef* CAN_RxStr)
+{
+    //判断传入指针是否为空
+    if(CAN_RxStr == NULL)
+    {
+        //为空返回
+        return;
+    }
+    //筛选数据
+    switch(CAN_RxStr->StdId)
+    {
+        //电盘电机接收数据
+    case CAN_3508_M1_ID:
+    case CAN_3508_M2_ID:
+    case CAN_3508_M3_ID:
+    case CAN_3508_M4_ID:
+    {
+        #if 0
+        uint8_t i = 0;
+        //将电机编号转换为底盘电机结构体数组元素编号
+        i = CAN_RxStr->StdId - CAN_3508_M1_ID; 
+        //将发送的can数据帧存储到对应存储电机数据结构体中
+        get_motor_measure(&Chassis_Motor_measure[i], RxDate);
+        #else 
+        get_motor_measure(&Chassis_Motor_measure[CAN_RxStr->StdId - CAN_3508_M1_ID], RxDate);
+        #endif
+    }
+    break;
+    }
+}
+
+
+uint16_t Get_motor_mechine_angle(uint16_t CAN_Rx_ID)
+{
+    return Chassis_Motor_measure[CAN_Rx_ID - CAN_3508_M1_ID].motor_mechine_angle;
+}
+uint16_t Get_motor_speed(uint16_t CAN_Rx_ID)
+{
+    return Chassis_Motor_measure[CAN_Rx_ID - CAN_3508_M1_ID].motor_speed;
+}
+uint16_t Get_motor_current(uint16_t CAN_Rx_ID)
+{
+    return Chassis_Motor_measure[CAN_Rx_ID - CAN_3508_M1_ID].motor_current;
+}
+uint16_t Get_motor_temprerate(uint16_t CAN_Rx_ID)
+{
+    return Chassis_Motor_measure[CAN_Rx_ID - CAN_3508_M1_ID].motor_temprerate;
+}
+
+void HAL_CAN_RxFifo0MsgPendingCallback(CAN_HandleTypeDef *hcan)
+{
+    CAN_RxHeaderTypeDef CAN_RxStructure;
+    CAN_RxStructure.DLC = CAN_RX_DLC;
+    //接收底盘数据
+    HAL_CAN_GetRxMessage(&CAN1_InitStructure, CAN_IT_RX_FIFO0_MSG_PENDING, &CAN_RxStructure, RxDate);
+    //处理接收到底盘电机数据
+    CAN_RxMsgHandle(&CAN_RxStructure);
+}
+
 
