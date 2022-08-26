@@ -37,6 +37,7 @@
 "rm_engineer_project\port.o"
 "rm_engineer_project\chassis_task.o"
 "rm_engineer_project\state.o"
+"rm_engineer_project\pid.o"
 "rm_engineer_project\led.o"
 "rm_engineer_project\can.o"
 --strict --scatter "RM_engineer_Project\RM_engineer_Project.sct"

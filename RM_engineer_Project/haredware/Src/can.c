@@ -288,7 +288,6 @@ static void CAN_RxMsgHandle(CAN_RxHeaderTypeDef* CAN_RxStr)
     }
 }
 
-
 uint16_t Get_motor_mechine_angle(uint16_t CAN_Rx_ID)
 {
     return Chassis_Motor_measure[CAN_Rx_ID - CAN_3508_M1_ID].motor_mechine_angle;
